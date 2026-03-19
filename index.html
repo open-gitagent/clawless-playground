@@ -25,7 +25,8 @@
       <!-- Header bar -->
       <header id="topbar">
         <div class="topbar-left">
-          <span class="logo"><img src="/logo.png" alt="ClawLess" width="20" height="20" class="topbar-logo" /> ClawLess</span>
+          <button id="btn-mobile-filetree" title="Files"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+          <span class="logo"><img src="/logo.png" alt="ClawLess" width="20" height="20" class="topbar-logo" /> <span>ClawLess</span></span>
           <span id="container-status" class="status-badge status-booting">booting</span>
           <span class="topbar-sep">|</span>
           <span class="topbar-gitagent">supports agents built on <a href="https://gitagent.sh" target="_blank" rel="noopener noreferrer">GitAgent</a> standard</span>
@@ -48,6 +49,9 @@
           <button id="btn-policy" class="btn-icon" title="Policy / Guardrails"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></button>
         </div>
       </header>
+
+      <!-- Mobile overlay (closes drawers) -->
+      <div id="mobile-overlay"></div>
 
       <!-- Body: filetree | main-content | sidebar -->
       <div id="body">

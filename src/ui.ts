@@ -70,6 +70,7 @@ export class UIManager {
     this.populateModelOptions();
     this.restoreConfig();
     this.bindRepoControls();
+    this.bindMobileNav();
   }
 
   /** Auto-open the browser preview tab on initial load. */
@@ -997,6 +998,39 @@ export class UIManager {
       clearTimeout(this.autoSyncTimer);
       this.autoSyncTimer = null;
     }
+  }
+
+  // ─── Mobile navigation ─────────────────────────────────────────────────────
+
+  private bindMobileNav(): void {
+    const btn = document.getElementById('btn-mobile-filetree')!;
+    const filetree = document.getElementById('filetree')!;
+    const overlay = document.getElementById('mobile-overlay')!;
+
+    const closeMobileDrawers = () => {
+      filetree.classList.remove('mobile-open');
+      overlay.classList.remove('visible');
+    };
+
+    btn.addEventListener('click', () => {
+      const isOpen = filetree.classList.contains('mobile-open');
+      if (isOpen) {
+        closeMobileDrawers();
+      } else {
+        filetree.classList.add('mobile-open');
+        overlay.classList.add('visible');
+      }
+    });
+
+    overlay.addEventListener('click', closeMobileDrawers);
+
+    // Close filetree drawer when a file is clicked (mobile)
+    document.getElementById('filetree-list')!.addEventListener('click', (e) => {
+      const item = (e.target as HTMLElement).closest('.ft-item');
+      if (item && !item.classList.contains('is-dir') && window.innerWidth <= 768) {
+        closeMobileDrawers();
+      }
+    });
   }
 
   // ─── Config panel ──────────────────────────────────────────────────────────
